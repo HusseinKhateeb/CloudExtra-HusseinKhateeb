@@ -32,6 +32,28 @@ This project follows a **Trunk-Based Development** workflow. The `main` branch i
 
 ---
 
+## Pipeline Definition – GitHub Actions
+
+This repository uses GitHub Actions for CI/CD.
+
+- **Trigger**: On push or PR to `main`
+- **Steps**:
+  1. Checkout code
+  2. Build with Maven
+  3. Run unit tests
+  4. Build Docker image and push to Amazon ECR
+  5. Update ECS Task Definition
+  6. Deploy new revision to ECS Service
+
+### AWS Services Used
+- **Amazon ECR**: Hosts Docker images
+- **Amazon ECS**: Runs the containerized Spring Boot app
+- **GitHub Secrets**:
+  - `AWS_ACCESS_KEY_ID`
+  - `AWS_SECRET_ACCESS_KEY`
+
+---
+
 ### Pull Request & Merge Policy
 
 1. **Open a PR Early**  
