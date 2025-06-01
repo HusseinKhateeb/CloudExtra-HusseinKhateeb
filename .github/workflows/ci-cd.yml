@@ -43,6 +43,9 @@ jobs:
       - name: Run unit tests
         run: mvn test -q
 
+      - name: Run Checkstyle
+        run: mvn checkstyle:checkstyle
+
       - name: Login to Amazon ECR
         run: |
           aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
