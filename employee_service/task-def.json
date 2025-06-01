@@ -1,0 +1,22 @@
+{
+  "family": "employee-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::455970271381:role/LabRole",
+  "containerDefinitions": [
+    {
+      "name": "employee-container",
+      "image": "455970271381.dkr.ecr.us-east-1.amazonaws.com/employee-service:latest",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true
+    }
+  ]
+}
